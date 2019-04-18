@@ -1,0 +1,12 @@
+language: java
+deploy:
+  provider: releases
+  api_key:
+    secure: 19HpaNYr6mMeXnsNZUZyqmeY8zqCcrhblOPV6C3yF2lWCFBcChXOcIiT0a5Q1nN91tgPOT7D4CKPIKnMAkmWh3atgAd/qkeJn+tyw03hbZoqDZjLNxb+4AC542ARfWrg3Yaf6gPvwVC4tTejgAGVgjwj5UXmofus7Bs0U0+/Kt0e5IxC001ZhzWkM4ODFemziEOjyQKf4MOt4uCfpv1zEKfOTAPhRBElFtIRlrftLHc+vvPowsD4ukgbnfphMVfZ64tkPzzcWqShmNol5UrXUgJ0j3zBkZfPtNY7UA2gzOq+vaTRpLJ8TMSch2d/bMmUkwPr68ylObWtTV07gfaYagrCRgx0btN/cQSMktiUAHU/VMMzowpEj98Sqvh16id2k6vbzahkQixHV7wN4eQ0Hk9+XH7s1c5jMDKmdK/7T58Oc0fQHOKTCJo8AhRaYQpnsB3zr6V8E6K2X0K5DMLhNvN3qS7cSi+eF3Zjf+aHI+XZsSIsxir5vvTz/vAAvwxru18KX71oLP7BWllDXxxt7RRorqA92zyTkH420dyAvOKLXey3HAwm1UvhjODKzEXMtO2ks7Uvb2WwHa5qJ920bSPjKyFIFVTHc/aJmxcmtPwvW0gj2Bk15C+UqTo63UvA9PTnPxjZgpuSCfTJg9xkNptuufcDnt4SDQvn7V+syPE=
+  file_glob: true
+  file: build/distributions/*
+  skip_cleanup: true
+  on:
+    all_branches: true
+    tags: true
+    repo: xebialabs-community/xld-ucp-plugin
