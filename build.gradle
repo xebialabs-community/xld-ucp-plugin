@@ -1,0 +1,25 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+plugins {
+  id "com.xebialabs.xldp" version "1.0.5"
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+version='0.0.1'
+
+def apiVersion = '2017.1.1'
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven {
+    url 'https://dist.xebialabs.com/public/maven2'
+  }
+}
+
+dependencies {
+  compile "com.xebialabs.deployit:udm-plugin-api:$apiVersion"
+}

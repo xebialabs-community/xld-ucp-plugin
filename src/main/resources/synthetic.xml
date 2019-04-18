@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2019 XEBIALABS
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.xebialabs.com/deployit/synthetic"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+
+  <type type="ucp.Instance" extends="overthere.LocalHost">
+    <property name="url" required="true" description="The url for connecting to the UCP instance (e.g. https://www.example.com)"/>
+    <property name="username" required="true" description="The username for connecting to the UCP instance"/>
+    <property name="password" required="true" password="true" description="The password for connecting to the UCP instance"/>
+  </type>
+
+  <type type="ucp.swarm.Service" extends="udm.BaseDeployed" deployable-type="ucp.swarm.ServiceSpec" container-type="ucp.Instance">
+    <generate-deployable type="ucp.swarm.ServiceSpec" extends="udm.BaseDeployable"/>
+    <property name="ucpId" label="ID in UCP" required="false" hidden="false" />
+    <property name="serviceName" />
+    <property name="image" />
+    <property name="portMappings" required="false" kind="boolean" hidden="true" default="false" description="Ports to publish in the format.  Provide the published port for the key and the target port for the value" />
+    <property name="environment" required="false" kind="boolean" hidden="true" default="false" description="Environment variables" />
+    <property name="portMapping" required="false" kind="map_string_string" hidden="true" description="Ports to publish in the format.  Provide the published port for the key and the target port for the value" />
+    <property name="envVars" required="false" kind="map_string_string" label="Environment Variables" />
+    <property name="labels" required="false" kind="map_string_string" />
+    <property name="networkMode" required="false" kind="enum" default="vip">
+      <enum-values>
+        <value>vip</value>
+        <value>dns round robin</value>
+      </enum-values>
+    </property>
+    <property name="replicas" required="false" kind="integer" default="1" />
+    <property name="stopGracePeriod" required="false" kind="integer" default="0" />
+    <property name="restartCondition" required="true" hidden="true" default="any" />
+    <property name="restartMaxAttempts" required="true" hidden="true" default="0" />
+    <property name="memoryLimit" kind="integer" required="true" hidden="true" default="104857600" />
+    <property name="ports" required="false" kind="set_of_ci" referenced-type="ucp.swarm.ServicePort" as-containment="true"/>
+  </type>
+
+  <type-modification type="ucp.swarm.ServiceSpec">
+    <property name="ucpId" required="false" hidden="true" />
+    <property name="ports" required="false" kind="set_of_ci" referenced-type="ucp.swarm.ServicePortSpec" as-containment="true"/>
+  </type-modification>
+
+  <type type="ucp.swarm.ServicePort" extends="udm.BaseEmbeddedDeployed" deployable-type="ucp.swarm.ServicePortSpec" container-type="ucp.swarm.Service">
+    <generate-deployable type="ucp.swarm.ServicePortSpec" extends="udm.BaseEmbeddedDeployable"/>
+    <property name="protocol" kind="enum" required="true">
+      <enum-values>
+        <value>tcp</value>
+        <value>udp</value>
+      </enum-values>
+    </property>
+    <property name="publishedPort" kind="integer" required="true" />
+    <property name="targetPort" kind="integer" required="true" />
+    <property name="publishMode" kind="enum" required="true">
+      <enum-values>
+        <value>ingress</value>
+        <value>host</value>
+      </enum-values>
+    </property>
+  </type>
+
+  <type type="ucp.swarm.Network" extends="udm.BaseDeployed" deployable-type="ucp.swarm.NetworkSpec" container-type="ucp.Instance">
+    <generate-deployable type="ucp.swarm.NetworkSpec" extends="udm.BaseDeployable"/>
+    <property name="ucpId" label="ID in UCP" required="false" hidden="false" />
+    <property name="networkName" />
+    <property name="driver" kind="enum" required="true" >
+      <enum-values>
+        <value>bridge</value>
+        <value>overlay</value>
+      </enum-values>
+    </property>
+    <property name="scope" kind="enum" required="true" >
+      <enum-values>
+        <value>local</value>
+        <value>swarm</value>
+      </enum-values>
+    </property>
+    <property name="enableIPv6" label="Enable IPv6" required="false" kind="boolean" default="false"/>
+    <property name="ingress" required="false" kind="boolean" default="false"/>
+    <property name="internal" required="false" kind="boolean" default="false"/>
+    <property name="attachable" required="false" kind="boolean" default="true"/>
+  </type>
+
+  <type-modification type="ucp.swarm.NetworkSpec">
+    <property name="ucpId" required="false" hidden="true" />
+  </type-modification>
+</synthetic>
