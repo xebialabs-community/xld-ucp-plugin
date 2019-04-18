@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.com/xebialabs-community/xld-ucp-plugin.svg?branch=master)](https://travis-ci.com/xebialabs-community/xld-ucp-plugin)
 [![License MIT][license-image]][license-url]
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-blue.svg)](https://github.com/RichardLitt/standard-readme)
+![GitHub All Releases](https://img.shields.io/github/downloads/xebialabs-community/xld-ucp-plugin/total.svg)
 
 > The UCP XL Deploy plugin enables the creation of objects through UCP.
 
