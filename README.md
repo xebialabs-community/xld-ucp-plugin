@@ -1,5 +1,6 @@
 # Docker Universal Control Plane integration for XL Deploy (_BETA_)
 
+[![Build Status](https://travis-ci.com/xebialabs-community/xld-ucp-plugin.svg?branch=master)](https://travis-ci.com/xebialabs-community/xld-ucp-plugin)
 [![License MIT][license-image]][license-url]
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-blue.svg)](https://github.com/RichardLitt/standard-readme)
 
