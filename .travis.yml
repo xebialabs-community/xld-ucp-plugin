@@ -10,3 +10,6 @@ deploy:
     all_branches: true
     tags: true
     repo: xebialabs-community/xld-ucp-plugin
+notifications:
+  slack:
+    secure: drkRMiqN+NLruRIQBcq66O+9Mcr4P7m4z2jC3Kn0e8MJGluJAXPICMoQg4STIvfOEpvMV1KQ/FCBNYnXpBIYN1ezE3G8GjOoh5HlmFbgK1g2kRN+5uw110fq306A+HCggN7cDzgy13DEUs7To5Vp9riGxf3aV3KDHO1aNWjxbrtIi0ylIqLoLEivG0f8MWqDvFl9z25KgBAzdKjfqbxQ944JhW/NzcJeUucEf18KBN/HQHnvjdZftQND7YqBD6QyvYveUwni0E49UZZoPYts32V+dm/0htxNVT//wTRay587ygWxbE4HpSDqhU7kEoZfAkjKEs/MHYr6cOFdH2Wr0v7B0gnC6uB9KiFz8zSJqICuQgYKShgGxKfYpE44BrEb87hvNkECqAKSzdl4xy7tTRP+M9sCXo8L+s3p0WcCvD6+LUpfGtC/MPAOOKLttlP6gC23+SQmsTPWdMZDYLnDTd/ppJGjNkJf/kfD+K9lcyS6OCdDk1+UIJ26qRxDgSqfFiSG2Icvx6zrWe62HI0AB/OlYfm2cIdkOAIIkg+0jnwJIRqgSKZ6bh9IFsjbewYnuLPSbrMAuwQ+QcdB2UmtVfTeu6JWFMnrwdn18wbDCeS44njiGh55IC8LhmwM7Xiqlv5jdlW3Z+gW7nQhArKuiLqgyVvPAOsuBqWPyOEEzW8=
